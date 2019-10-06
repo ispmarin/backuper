@@ -19,15 +19,17 @@ def rclone_copy_file(backup_file: str, remote_gdrive: str, remote_folder: str):
 
 
 def compress_backup(backup_file:str):
-    with tarfile.open(backup_file, 'w:gz') as tar:
+    backup_file_name = backup_file + '.tar.gz'
+    with tarfile.open(backup_file_name, 'w:gz') as tar:
         tar.add(backup_file)
-
+    return backup_file_name
 
 def encrypt_backup(backup_file_tar: str, passphrase: str):
     gpg = gnupg.GPG()
     with open(backup_file_tar, 'rb') as f: 
         gpg.encrypt_file(f, output=backup_file_tar + '.gpg', passphrase=passphrase, symmetric=True, recipients=None) 
-    
+    return backup_file_tar + '.gpg'
+
 
 def decrypt_backup(backup_file_tar_gpg: str, passphrase: str):
     gpg = gnupg.GPG()
@@ -36,7 +38,7 @@ def decrypt_backup(backup_file_tar_gpg: str, passphrase: str):
 
 
 def create_backup(backup_file: str, remote_gdrive: str, remote_folder: str, passphrase: str):
-    compress_backup(backup_file)
-    backup_file_tar_gz = backup_file + '.tar.gz'
-    encrypt_backup(backup_file_tar_gz, passphrase)  
-    return str(backup_file)
+    backup_file_name = compress_backup(backup_file)
+    backup_file_name = encrypt_backup(backup_file_name, passphrase)
+    rclone_copy_file(backup_file_name, remote_gdrive, remote_folder)
+    return str(backup_file_name)

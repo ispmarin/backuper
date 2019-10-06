@@ -2,12 +2,14 @@
 
 import falcon
 
-from interfaces import StartBackup, ListBackups
+from interfaces import CreateBackup, ListBackups
 
 
 app = falcon.API()
-start_backup = StartBackup()
+create_backup = CreateBackup()
 list_backup = ListBackups('gdrive_usp', 'backup')
-app.add_route('/listbackup', list_backup)
+
+app.add_route('/list', list_backup)
+app.add_route('/create', create_backup)
 
 

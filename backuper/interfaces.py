@@ -1,19 +1,22 @@
 import falcon
-from controllers import list_backups, start_backup
+from controllers import list_backups, create_backup
 
 
-class StartBackup(object):
+class CreateBackup(object):
     def on_get(self, req, resp):
         resp.body = ('Answer')
 
     def on_post(self, req, resp):
-        backup_path = req.media.get('backup_path')
-        status = start_backup(backup_path)
-        if status:
-            resp.body = ("Backup folder {} successful".format(backup_path))
+        backup_folder = req.media.get('backup_folder')
+        remote_gdrive = req.media.get('remote_gdrive')
+        remote_folder = req.media.get('remote_folder')
+        passphrase    = req.media.get('passphrase')
+        backup_file_tar_gpg = create_backup(backup_folder, remote_gdrive, remote_folder, passphrase)
+        if backup_file_tar_gpg:
+            resp.body = ("Backup folder {} successful".format(backup_file_tar_gpg))
         else:
             resp.status = falcon.status_codes.HTTP_500
-            resp.body = ("Failure to back up folder {}".format(backup_path))
+            resp.body = ("Failure to back up folder {}".format(backup_file_tar_gpg))
 
 
 class ListBackups(object):
