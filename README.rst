@@ -17,6 +17,8 @@ Backuper
 
 
 Backup to cloud
+*TODO*: 
+- queue for backup file creation http://python-rq.org/docs/
 
 
 * Free software: MIT license
