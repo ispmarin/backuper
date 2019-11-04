@@ -84,7 +84,7 @@ class GetJobIDs(object):
             jobs_list = self.backup_queue.job_ids
             jobs_count = self.backup_queue.count
             
-            resp.body = {"job_ids :{} \n Total jobs in queue {}".format(jobs_list, jobs_count)}
+            resp.body = ("job_ids :{} \n Total jobs in queue {}".format(jobs_list, jobs_count))
         except Exception as e:
             resp.status = falcon.status_codes.HTTP_500
             resp.body = ("Error {}".format(e))
