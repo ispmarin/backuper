@@ -88,3 +88,19 @@ class GetJobIDs(object):
         except Exception as e:
             resp.status = falcon.status_codes.HTTP_500
             resp.body = ("Error {}".format(e))
+
+
+class CancelJob(object):
+
+    def __init__(self, backup_queue):
+        self.backup_queue = backup_queue
+
+    def on_post(self, req, resp):
+        try:
+            job_id = req.media.get('job_id')
+            job_running = self.backup_queue.fetch_job(job_id)
+            job_running.cancel()
+            resp.body = ("job_id {} cancelled".format(job_id))
+        except Exception as e:
+            resp.status = falcon.status_codes.HTTP_500
+            resp.body = ("Error {}".format(e))
