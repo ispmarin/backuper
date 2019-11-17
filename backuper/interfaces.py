@@ -1,7 +1,7 @@
 import falcon
 import uuid
 
-from controllers import list_backups, create_backup
+from controllers import list_backups, create_backup, rclone_sync
 
 
 class CreateBackup(object):
@@ -55,6 +55,39 @@ class ListBackups(object):
             resp.body = ("Error accessing Gdrive backups, {}".format(e))
 
 
+class SyncBackup(object):
+
+    def __init__(self, backup_queue):
+        self.backup_queue = backup_queue
+
+    def on_post(self, req, resp):
+
+        job_id = uuid.uuid4().hex
+
+        backup_folder = req.media.get('backup_folder')
+        remote_gdrive = req.media.get('remote_gdrive')
+        remote_folder = req.media.get('remote_folder')
+        passphrase    = req.media.get('passphrase')
+        backup_dir    = req.media.get('backup_dir')
+
+        backup_job = self.backup_queue.enqueue(
+            rclone_sync, 
+            args=(backup_folder, remote_gdrive, remote_folder, passphrase, backup_dir),
+            kwags={
+                'description':'Sync process: folder {} gdrive {}'.format(backup_folder, remote_folder),
+                'job_id': job_id
+            },
+            job_timeout='6h'
+        )
+
+        if backup_job.result is None:
+            resp.body = ('{}'.format(job_id))
+        else:
+            resp.status = falcon.status_codes.HTTP_500
+            resp.body = ('Failure on queue')
+
+
+
 class CheckBackupProgress(object):
 
     def __init__(self, backup_queue):
@@ -104,3 +137,5 @@ class CancelJob(object):
         except Exception as e:
             resp.status = falcon.status_codes.HTTP_500
             resp.body = ("Error {}".format(e))
+
+

@@ -18,11 +18,19 @@ def rclone_copy_file(backup_file: str, remote_gdrive: str, remote_folder: str):
     subprocess.run(rclone_cmd_parsed)
 
 
+def rclone_sync(backup_folder: str, remote_gdrive: str, remote_folder: str, backup_dir_date: str):
+    rclone_cmd = "rclone sync {bf} {rgd}:{rmf} --backup-dir {rgd}:{rmf}-{bdr}".format(
+        bf=backup_folder, rgd=remote_gdrive, rmf=remote_folder, bdr=backup_dir_date)
+    rclone_cmd_parsed = shlex.split(rclone_cmd)
+    subprocess.run(rclone_cmd_parsed)
+
+
 def compress_backup(backup_file:str):
     backup_file_name = backup_file + '.tar.gz'
     with tarfile.open(backup_file_name, 'w:gz') as tar:
         tar.add(backup_file)
     return backup_file_name
+
 
 def encrypt_backup(backup_file_tar: str, passphrase: str):
     gpg = gnupg.GPG()
