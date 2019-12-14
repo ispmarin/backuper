@@ -1,8 +1,8 @@
 import shlex
 import subprocess
-import gnupg
 import tarfile
 
+import gnupg
 
 
 def list_backups(remote_gdrive: str, remote_folder: str):
@@ -25,7 +25,7 @@ def rclone_sync(backup_folder: str, remote_gdrive: str, remote_folder: str, back
     subprocess.run(rclone_cmd_parsed)
 
 
-def compress_backup(backup_file:str):
+def compress_backup(backup_file: str):
     backup_file_name = backup_file + '.tar.gz'
     with tarfile.open(backup_file_name, 'w:gz') as tar:
         tar.add(backup_file)
@@ -34,14 +34,14 @@ def compress_backup(backup_file:str):
 
 def encrypt_backup(backup_file_tar: str, passphrase: str):
     gpg = gnupg.GPG()
-    with open(backup_file_tar, 'rb') as f: 
-        gpg.encrypt_file(f, output=backup_file_tar + '.gpg', passphrase=passphrase, symmetric=True, recipients=None) 
+    with open(backup_file_tar, 'rb') as f:
+        gpg.encrypt_file(f, output=backup_file_tar + '.gpg', passphrase=passphrase, symmetric=True, recipients=None)
     return backup_file_tar + '.gpg'
 
 
 def decrypt_backup(backup_file_tar_gpg: str, passphrase: str):
     gpg = gnupg.GPG()
-    with open(backup_file_tar_gpg, 'rb') as ff: 
+    with open(backup_file_tar_gpg, 'rb') as ff:
         gpg.decrypt_file(ff, output=backup_file_tar_gpg, passphrase=passphrase)
 
 

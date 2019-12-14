@@ -1,18 +1,19 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """Console script for backuper."""
-import sys
-import click
-
-
-@click.command()
-def main(args=None):
-    """Console script for backuper."""
-    click.echo("Replace this message by putting your code into "
-               "backuper.cli.main")
-    click.echo("See click documentation at https://click.palletsprojects.com/")
-    return 0
+import argparse
+import datetime
+from controllers import rclone_sync
 
 
 if __name__ == "__main__":
-    sys.exit(main())  # pragma: no cover
+    parser = argparse.ArgumentParser(description="Use rclone do create encrypted backups.")
+
+    parser.add_argument('--gdrive', '-g')
+    parser.add_argument('--backup_folder', '-b')
+    parser.add_argument('--remote_folder', '-r')
+    args = parser.parse_args()
+    backup_time = datetime.datetime.now().strftime('%Y%m%d')
+
+    rclone_sync(args.backup_folder, args.gdrive, args.remote_folder, backup_time)

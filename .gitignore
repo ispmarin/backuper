@@ -4,6 +4,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.ipynb_checkpoints
+*.code-workspace
 
 # C extensions
 *.so
@@ -48,7 +50,7 @@ coverage.xml
 *.cover
 .hypothesis/
 .pytest_cache/
-
+.idea
 # Translations
 *.mo
 *.pot
