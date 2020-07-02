@@ -49,4 +49,3 @@ def create_backup(backup_file: str, remote_gdrive: str, remote_folder: str, pass
     backup_file_name = compress_backup(backup_file)
     backup_file_name = encrypt_backup(backup_file_name, passphrase)
     rclone_copy_file(backup_file_name, remote_gdrive, remote_folder)
-    return "Done"
