@@ -12,3 +12,8 @@ History
 ------------------
 
 * CRUD working, background backup creation using `python-rq`.
+
+0.2.0 (2020-07-03)
+------------------
+
+* Command-line interface working, with password captured by `getpasswd`.

@@ -33,7 +33,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    description="Backup to cloud",
+    description="Backup to cloud using rclone",
     entry_points={
         'console_scripts': [
             'backuper=backuper.cli:main',

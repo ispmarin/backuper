@@ -7,8 +7,8 @@
 import unittest
 from click.testing import CliRunner
 
-from backuper import backuper
-from backuper import cli
+from api import backuper
+from api import cli
 
 
 class TestBackuper(unittest.TestCase):
