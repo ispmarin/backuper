@@ -3,7 +3,6 @@
 
 """Console script for backuper."""
 import argparse
-import datetime
 import logging
 from getpass import getpass
 from controllers import create_backup
@@ -13,11 +12,19 @@ logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description="Use rclone do create encrypted backups.")
+    parser = argparse.ArgumentParser(
+        description="Use rclone do create encrypted backups."
+    )
 
-    parser.add_argument('--gdrive', '-g', required=True)
-    parser.add_argument('--backup_folder', '-b', required=True)
-    parser.add_argument('--remote_folder', '-r', required=True)
+    parser.add_argument(
+        "--gdrive", "-g", required=True, help="The GDrive name in Rclone"
+    )
+    parser.add_argument(
+        "--backup_folder", "-b", required=True, help="The folder to be backed up"
+    )
+    parser.add_argument(
+        "--remote_folder", "-r", required=True, help="The remote folder to be used"
+    )
 
     args = parser.parse_args()
 
@@ -29,6 +36,3 @@ if __name__ == "__main__":
         logger.info("Backup created")
     else:
         logger.error("Password not provided. Please provide password to create backup.")
-
-
-
