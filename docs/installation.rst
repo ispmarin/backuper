@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install Backuper, run this command in your terminal:
+To install webrclone, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install backuper
+    $ pip install webrclone
 
-This is the preferred method to install Backuper, as it will always install the most recent stable release.
+This is the preferred method to install webrclone, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,19 +26,19 @@ you through the process.
 From sources
 ------------
 
-The sources for Backuper can be downloaded from the `Github repo`_.
+The sources for webrclone can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/ispmarin/backuper
+    $ git clone git://github.com/ispmarin/webrclone
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl -OJL https://github.com/ispmarin/backuper/tarball/master
+    $ curl -OJL https://github.com/ispmarin/webrclone/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/ispmarin/backuper
-.. _tarball: https://github.com/ispmarin/backuper/tarball/master
+.. _Github repo: https://github.com/ispmarin/webrclone
+.. _tarball: https://github.com/ispmarin/webrclone/tarball/master

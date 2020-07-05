@@ -1,4 +1,4 @@
-Welcome to Backuper's documentation!
+Welcome to webrclone's documentation!
 ======================================
 
 .. toctree::

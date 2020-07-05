@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use Backuper in a project::
+To use webrclone in a project::
 
-    import backuper
+    import webrclone

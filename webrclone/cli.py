@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Console script for backuper."""
+"""Console script for webrclone."""
 import argparse
 import logging
 from getpass import getpass

@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests for `backuper` package."""
+"""Tests for `webrclone` package."""
 
 
 import unittest
 from click.testing import CliRunner
 
-from api import backuper
+from api import webrclone
 from api import cli
 
 
-class TestBackuper(unittest.TestCase):
-    """Tests for `backuper` package."""
+class Testwebrclone(unittest.TestCase):
+    """Tests for `webrclone` package."""
 
     def setUp(self):
         """Set up test fixtures, if any."""
@@ -28,7 +28,7 @@ class TestBackuper(unittest.TestCase):
         runner = CliRunner()
         result = runner.invoke(cli.main)
         assert result.exit_code == 0
-        assert 'backuper.cli.main' in result.output
+        assert 'webrclone.cli.main' in result.output
         help_result = runner.invoke(cli.main, ['--help'])
         assert help_result.exit_code == 0
         assert '--help  Show this message and exit.' in help_result.output

@@ -1,5 +1,3 @@
-.. highlight:: shell
-
 ============
 Contributing
 ============
@@ -15,7 +13,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/ispmarin/backuper/issues.
+Report bugs at https://github.com/ispmarin/webrclone/issues.
 
 If you are reporting a bug, please include:
 
@@ -26,7 +24,7 @@ If you are reporting a bug, please include:
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/ispmarin/backuper/issues.
+The best way to send feedback is to file an issue at https://github.com/ispmarin/webrclone/issues.
 
 If you are proposing a feature:
 

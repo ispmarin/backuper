@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# backuper documentation build configuration file, created by
+# webrclone documentation build configuration file, created by
 # sphinx-quickstart on Fri Jun  9 13:47:02 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -47,7 +47,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Backuper'
+project = u'WebRclone'
 copyright = u"2019, Ivan Marin"
 author = u"Ivan Marin"
 
@@ -101,7 +101,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'backuperdoc'
+htmlhelp_basename = 'webrclonedoc'
 
 
 # -- Options for LaTeX output ------------------------------------------
@@ -128,8 +128,8 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'backuper.tex',
-     u'Backuper Documentation',
+    (master_doc, 'webrclone.tex',
+     u'WebRclone Documentation',
      u'Ivan Marin', 'manual'),
 ]
 
@@ -139,8 +139,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'backuper',
-     u'Backuper Documentation',
+    (master_doc, 'webrclone',
+     u'WebRclone Documentation',
      [author], 1)
 ]
 
@@ -151,10 +151,10 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'backuper',
-     u'Backuper Documentation',
+    (master_doc, 'webrclone',
+     u'WebRclone Documentation',
      author,
-     'backuper',
+     'webrclone',
      'One line description of project.',
      'Miscellaneous'),
 ]
