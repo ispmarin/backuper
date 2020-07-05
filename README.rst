@@ -16,9 +16,8 @@ WebRclone
 
 
 
-Backup using RClone interface
-*TODO*:
-- queue for backup file creation
+Backup to GDrive using RClone interface, with a command-line interface and a REST API.
+
 
 
 * Free software: MIT license
@@ -28,5 +27,5 @@ Backup using RClone interface
 Features
 --------
 
-* TODO
+* Refactor REST API
 
