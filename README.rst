@@ -16,7 +16,8 @@ WebRclone
 
 
 
-Backup to GDrive using RClone interface, with a command-line interface and a REST API.
+Backup to GDrive using RClone interface, with a command-line interface and a REST API. Uses
+Falcon, RQ and Redis for queueing the backup jobs.
 
 
 
@@ -27,5 +28,7 @@ Backup to GDrive using RClone interface, with a command-line interface and a RES
 Features
 --------
 
-* Refactor REST API
+* Add media (JSON) validators for POST requests
+* Verify job queue and clean when done
+* Document Docker Redis container
 
